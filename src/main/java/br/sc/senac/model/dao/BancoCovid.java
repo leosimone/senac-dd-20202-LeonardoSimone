@@ -8,7 +8,7 @@ package br.sc.senac.model.dao;
 	import java.sql.SQLException;
 	import java.sql.Statement;
 	
-	public class Banco {
+	public class BancoCovid {
 
 		private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 		private static final String BANCODADOS = "covidScript";
