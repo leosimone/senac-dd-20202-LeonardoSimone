@@ -1,12 +1,11 @@
 package br.sc.senac.model.entity;
 
-import java.time.LocalDate;
 
 public class PesquisadorVO extends PessoaVO {
 	
 	private String instituicao;
 
-	public PesquisadorVO(String nome, String cpf, char sexo, LocalDate dataNascimento, boolean voluntario,
+	public PesquisadorVO(String nome, String cpf, String sexo, String dataNascimento, boolean voluntario,
 			String instituicao) {
 		super(nome, cpf, sexo, dataNascimento, voluntario);
 		this.instituicao = instituicao;

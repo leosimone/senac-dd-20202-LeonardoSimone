@@ -8,7 +8,7 @@ package br.sc.senac.model.dao;
 	import java.sql.SQLException;
 	import java.sql.Statement;
 	
-	public class BancoCovid {
+	public class Banco {
 
 		private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 		private static final String BANCODADOS = "covidScript";
@@ -16,6 +16,7 @@ package br.sc.senac.model.dao;
 		private static final String CONEXAO = "jdbc:mysql://localhost:3306/" + BANCODADOS + BUGFIX_HORABR;
 		private static final String USER = "root";
 		private static final String PASSWORD = "availeo86";
+		public static final int CODIGO_RETORNO_SUCESSO = 1;
 		
 		public static Connection getConnection(){
 			try {
@@ -77,7 +78,17 @@ package br.sc.senac.model.dao;
 				return null;
 			}
 		}
-
+		
+		public static PreparedStatement getPreparedStatementWithGeneratedKeys(Connection conn, String sql){
+			try {
+				PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				return stmt;
+			} catch (Exception e) {
+				System.out.println("Erro ao obter o PreparedStatement.");
+				System.out.println("Erro: " + e.getMessage());
+				return null;
+			}
+		}
 		public static void closePreparedStatement(Statement stmt){
 			try {
 				if(stmt != null){

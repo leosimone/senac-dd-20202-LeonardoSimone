@@ -2,7 +2,7 @@ package br.sc.senac.executavel;
 
 import javax.swing.JOptionPane;
 
-import br.sc.senac.model.dao.BancoCovid;
+import br.sc.senac.model.dao.Banco;
 
 public class Executavel {
 
@@ -14,8 +14,8 @@ public class Executavel {
 	
 		//JOptionPane.showMessageDialog(null, "Testeee");
 		
-		BancoCovid.getConnection();
-		// System.out.println ("COnectado");
+		Banco.getConnection();
+		System.out.println ("COnectado");
 		
 	}
 

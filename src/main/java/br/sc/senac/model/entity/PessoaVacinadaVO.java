@@ -1,14 +1,12 @@
 package br.sc.senac.model.entity;
 
-import java.time.LocalDate;
-
 public class PessoaVacinadaVO extends PessoaVO {
 	
 	private char reacao;
-	private LocalDate dataVacinacao;
+	private String dataVacinacao;
 	
-	public PessoaVacinadaVO(String nome, String cpf, char sexo, LocalDate dataNascimento, boolean voluntario,
-			char reacao, LocalDate dataVacinacao) {
+	public PessoaVacinadaVO(String nome, String cpf, String sexo, String dataNascimento, boolean voluntario,
+			char reacao, String dataVacinacao) {
 		super(nome, cpf, sexo, dataNascimento, voluntario);
 		this.reacao = reacao;
 		this.dataVacinacao = dataVacinacao;
@@ -27,11 +25,11 @@ public class PessoaVacinadaVO extends PessoaVO {
 		this.reacao = reacao;
 	}
 
-	public LocalDate getDataVacinacao() {
+	public String getDataVacinacao() {
 		return dataVacinacao;
 	}
 
-	public void setDataVacinacao(LocalDate dataVacinacao) {
+	public void setDataVacinacao(String dataVacinacao) {
 		this.dataVacinacao = dataVacinacao;
 	}
 	

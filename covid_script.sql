@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Pessoa` (
   `Nome` VARCHAR(300) NOT NULL,
   `CPF` CHAR(11) NOT NULL,
   `Sexo` CHAR(1) NOT NULL,
-  `DataNascimento` DATE NOT NULL,
+  `DataNascimento` VARCHAR(20) NOT NULL,
   `Voluntario` BOOLEAN NOT NULL,
   PRIMARY KEY (`idPessoa`));
 
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Vacina` (
   `PaisOrigem` VARCHAR(100) NOT NULL,
   `NomePesquisador` VARCHAR(300) NOT NULL,
   `NomeVoluntario` VARCHAR(300) NOT NULL,
-  `DataInicio` DATE NOT NULL,
+  `DataInicio` VARCHAR(20) NOT NULL,
   `Instituicao_idInstituicao` INT NOT NULL,
   PRIMARY KEY (`idVacina`, `Instituicao_idInstituicao`),
   INDEX `fk_Vacina_Instituicao1_idx` (`Instituicao_idInstituicao` ASC) VISIBLE,
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Pesquisador` (
   `Nome` VARCHAR(300) NOT NULL,
   `CPF` CHAR(11) NOT NULL,
   `Sexo` CHAR(1) NOT NULL,
-  `DataNascimento` DATE NOT NULL,
+  `DataNascimento` VARCHAR(20) NOT NULL,
   `Pessoa_idPessoa` INT NOT NULL,
   `Instituicao_idInstituicao` INT NOT NULL,
   PRIMARY KEY (`idPesquisador`, `Instituicao_idInstituicao`),
