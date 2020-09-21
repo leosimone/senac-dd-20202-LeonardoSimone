@@ -3,16 +3,20 @@ package br.sc.senac.model.entity;
 import java.time.LocalDate;
 
 public class VacinaVO {
-
-	private char estagioPesquisa;
+	
+	private int id;
+	private String nomeVacina;
+	private String estagioPesquisa;
 	private String origem;
 	private String nomePesquisador;
 	private String nomeVoluntario;
 	private LocalDate dataInicio;
 	
-	public VacinaVO(char estagioPesquisa, String origem, String nomePesquisador, String nomeVoluntario,
+	public VacinaVO(int id, String nomeVacina, String estagioPesquisa, String origem, String nomePesquisador, String nomeVoluntario,
 			LocalDate dataInicio) {
 		super();
+		this.id = id;
+		this.nomeVacina = nomeVacina;
 		this.estagioPesquisa = estagioPesquisa;
 		this.origem = origem;
 		this.nomePesquisador = nomePesquisador;
@@ -25,11 +29,11 @@ public class VacinaVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public char getEstagioPesquisa() {
+	public String getEstagioPesquisa() {
 		return estagioPesquisa;
 	}
 
-	public void setEstagioPesquisa(char estagioPesquisa) {
+	public void setEstagioPesquisa(String estagioPesquisa) {
 		this.estagioPesquisa = estagioPesquisa;
 	}
 
@@ -64,6 +68,23 @@ public class VacinaVO {
 	public void setDataInicio(LocalDate dataInicio) {
 		this.dataInicio = dataInicio;
 	}
+
+	public String getNomeVacina() {
+		return nomeVacina;
+	}
+
+	public void setNomeVacina(String nomeVacina) {
+		this.nomeVacina = nomeVacina;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	
 	
 }
