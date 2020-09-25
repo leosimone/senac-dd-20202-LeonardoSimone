@@ -119,6 +119,10 @@ public class TelaCadastroPessoas extends JFrame {
 		JButton btnCadastrarInstituicao = new JButton("Cadastrar Institui\u00E7\u00E3o");
 		btnCadastrarInstituicao.setBounds(438, 237, 133, 23);
 		contentPane.add(btnCadastrarInstituicao);
+		
+		JLabel lblCadastrarInstituicao = new JLabel("N\u00E3o achou a Institui\u00E7\u00E3o?\n Clique abaixo:\r\n");
+		lblCadastrarInstituicao.setBounds(385, 213, 204, 14);
+		contentPane.add(lblCadastrarInstituicao);
 	}
 	private ArrayList<String> obterTipo() {
 		ArrayList<String> tipos = new ArrayList<String>();

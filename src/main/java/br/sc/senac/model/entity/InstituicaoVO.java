@@ -2,11 +2,13 @@ package br.sc.senac.model.entity;
 
 public class InstituicaoVO {
 
+	private String nome;
 	private String pais;
 	private String nomeVacina;
 	
-	public InstituicaoVO(String pais, String nomeVacina) {
+	public InstituicaoVO(String nome, String pais, String nomeVacina) {
 		super();
+		this.nome = nome;
 		this.pais = pais;
 		this.nomeVacina = nomeVacina;
 	}
@@ -30,6 +32,14 @@ public class InstituicaoVO {
 
 	public void setNomeVacina(String nomeVacina) {
 		this.nomeVacina = nomeVacina;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	
