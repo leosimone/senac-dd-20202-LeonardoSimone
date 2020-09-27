@@ -143,7 +143,8 @@ public class PesquisadorDAO {
 					pesquisadorBuscado.setSexo(conjuntoResultante.getString("sexo"));
 					pesquisadorBuscado.setDataNascimento(conjuntoResultante.getString("dataNascimento"));
 					pesquisadorBuscado.setVoluntario(conjuntoResultante.getBoolean("voluntario"));
-					pesquisadorBuscado.setInstituicao(conjuntoResultante.getString("instituicao"));
+					//pesquisador.setId(Integer.parseInt(resultado.getString("PESQUISADOR")));
+					pesquisadorBuscado.setInstituicao(conjuntoResultante.getString("nome"));
 					
 					pesquisadoresBuscados.add(pesquisadorBuscado);
 				}

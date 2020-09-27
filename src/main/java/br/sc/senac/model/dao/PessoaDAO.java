@@ -103,13 +103,7 @@ public class PessoaDAO {
 			query.setInt(1, id);
 			ResultSet conjuntoResultante = query.executeQuery();
 				if(conjuntoResultante.next()) {
-					pessoaBuscada = new PessoaVO();
-					pessoaBuscada.setId(conjuntoResultante.getInt("id"));
-					pessoaBuscada.setNome(conjuntoResultante.getString("nome"));
-					pessoaBuscada.setCpf(conjuntoResultante.getString("CPF"));
-					pessoaBuscada.setSexo(conjuntoResultante.getString("sexo"));
-					pessoaBuscada.setDataNascimento(conjuntoResultante.getString("dataNascimento"));
-					pessoaBuscada.setVoluntario(conjuntoResultante.getBoolean("voluntario"));
+					pessoaBuscada = construirPessoaDoResultSet(conjuntoResultante);
 				}
 			
 		} catch (SQLException e) {
@@ -133,15 +127,9 @@ public class PessoaDAO {
 			
 			ResultSet conjuntoResultante = query.executeQuery();
 				while(conjuntoResultante.next()) {
-					PessoaVO pessoaBuscada = new PessoaVO();
-					pessoaBuscada.setId(conjuntoResultante.getInt("id"));
-					pessoaBuscada.setNome(conjuntoResultante.getString("nome"));
-					pessoaBuscada.setCpf(conjuntoResultante.getString("CPF"));
-					pessoaBuscada.setSexo(conjuntoResultante.getString("sexo"));
-					pessoaBuscada.setDataNascimento(conjuntoResultante.getString("dataNascimento"));
-					pessoaBuscada.setVoluntario(conjuntoResultante.getBoolean("voluntario"));
-					
+					PessoaVO pessoaBuscada = construirPessoaDoResultSet(conjuntoResultante);					
 					pessoasBuscadas.add(pessoaBuscada);
+					
 				}
 			
 		} catch (SQLException e) {
@@ -151,4 +139,39 @@ public class PessoaDAO {
 		
 		return pessoasBuscadas;
 	}
+	
+	public static PessoaVO construirPessoaDoResultSet(ResultSet conjuntoResultante) throws SQLException {
+		PessoaVO pessoa = new PessoaVO();
+		pessoa.setId(conjuntoResultante.getInt("id"));
+		pessoa.setNome(conjuntoResultante.getString("nome"));
+		pessoa.setCpf(conjuntoResultante.getString("CPF"));
+		pessoa.setSexo(conjuntoResultante.getString("sexo"));
+		pessoa.setDataNascimento(conjuntoResultante.getString("dataNascimento"));
+		pessoa.setVoluntario(conjuntoResultante.getBoolean("voluntario"));
+		
+		return pessoa;
+	}
+
+	public boolean cpfJaCadastrado(String cpf) {
+		boolean jaCadastrado = false;
+		Connection conexao = Banco.getConnection();
+		String sql = " SELECT COUNT(ID) FROM PESSOA WHERE CPF = ?";
+		PreparedStatement consulta = Banco.getPreparedStatement(conexao, sql);
+		
+		try {
+			consulta.setString(1, cpf);
+			ResultSet conjuntoResultante = consulta.executeQuery();
+			jaCadastrado = conjuntoResultante.next();
+		} catch (SQLException e) {
+			System.out.println("Erro ao verificar se o CPF já existe");
+			
+		} finally {
+			Banco.closePreparedStatement(consulta);
+			Banco.closeConnection(conexao);
+		}
+		
+		return jaCadastrado;
+	}
+	
+	
 }

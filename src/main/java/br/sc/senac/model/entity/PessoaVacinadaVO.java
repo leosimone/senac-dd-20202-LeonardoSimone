@@ -5,9 +5,9 @@ public class PessoaVacinadaVO extends PessoaVO {
 	private char reacao;
 	private String dataVacinacao;
 	
-	public PessoaVacinadaVO(String nome, String cpf, String sexo, String dataNascimento, boolean voluntario,
+	public PessoaVacinadaVO(int id, String nome, String cpf, String sexo, String dataNascimento, boolean voluntario,
 			char reacao, String dataVacinacao) {
-		super(nome, cpf, sexo, dataNascimento, voluntario);
+		super(id, nome, cpf, sexo, dataNascimento, voluntario);
 		this.reacao = reacao;
 		this.dataVacinacao = dataVacinacao;
 	}

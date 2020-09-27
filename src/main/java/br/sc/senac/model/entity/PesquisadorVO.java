@@ -5,9 +5,9 @@ public class PesquisadorVO extends PessoaVO {
 	
 	private InstituicaoVO instituicao;
 
-	public PesquisadorVO(String nome, String cpf, String sexo, String dataNascimento, boolean voluntario,
+	public PesquisadorVO(int id, String nome, String cpf, String sexo, String dataNascimento, boolean voluntario,
 			InstituicaoVO instituicao) {
-		super(nome, cpf, sexo, dataNascimento, voluntario);
+		super(id, nome, cpf, sexo, dataNascimento, voluntario);
 		this.setInstituicao(instituicao);
 	}
 

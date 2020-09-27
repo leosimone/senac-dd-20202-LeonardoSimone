@@ -6,7 +6,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.sc.senac.controller.PessoaController;
+import br.sc.senac.model.entity.PessoaVO;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -18,13 +23,15 @@ import javax.swing.SwingConstants;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TelaCadastroPessoas extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNome;
 	private JTextField txtCPF;
-	private JComboBox cbSexo;
+	private JComboBox cBSexo;
 	private JComboBox cBTipo;
 	private final Action action = new SwingAction();
 
@@ -80,11 +87,11 @@ public class TelaCadastroPessoas extends JFrame {
 		contentPane.add(lblTipo);
 		
 		JLabel lblInstituicao = new JLabel("Institui\u00E7\u00E3o:");
-		lblInstituicao.setBounds(39, 244, 73, 14);
+		lblInstituicao.setBounds(39, 213, 73, 14);
 		contentPane.add(lblInstituicao);
 		
 		JComboBox cBInstituicao = new JComboBox();
-		cBInstituicao.setBounds(175, 238, 253, 20);
+		cBInstituicao.setBounds(122, 210, 253, 20);
 		contentPane.add(cBInstituicao);
 		
 		txtNome = new JTextField();
@@ -98,26 +105,43 @@ public class TelaCadastroPessoas extends JFrame {
 		contentPane.add(txtCPF);
 		
 		ArrayList<String> sexos = obterSexo();
-		cbSexo = new JComboBox(sexos.toArray());
-		cbSexo.setBounds(175, 115, 103, 20);
-		contentPane.add(cbSexo);
+		cBSexo = new JComboBox(sexos.toArray());
+		cBSexo.setBounds(175, 115, 103, 20);
+		contentPane.add(cBSexo);
 			
 				
 		JButton btnCadastrar = new JButton("SALVAR");
+		btnCadastrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			PessoaVO pessoa = new PessoaVO();
+				if(txtNome.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Campo nome obrigatório", "Atenção", JOptionPane.WARNING_MESSAGE);
+				return;
+				}
+				if(txtCPF.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório", "Atenção", JOptionPane.WARNING_MESSAGE);
+				return;}
+				
+				else {
+					
+					PessoaController controller = new PessoaController();
+					
+					String mensagem = controller.salvar(pessoa);
+					JOptionPane.showMessageDialog(contentPane, mensagem);
+				}
+				
+				
+				
+				
+			}
+		});
 		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCadastrar.setBounds(232, 274, 91, 46);
+		btnCadastrar.setBounds(204, 257, 91, 46);
 		contentPane.add(btnCadastrar);
 		
-		JComboBox cBVoluntario = new JComboBox();
-		cBVoluntario.setBounds(175, 198, 103, 20);
-		contentPane.add(cBVoluntario);
-		
-		JLabel lblVoluntario = new JLabel("Volunt\u00E1rio(a):");
-		lblVoluntario.setBounds(39, 201, 103, 14);
-		contentPane.add(lblVoluntario);
-		
 		JButton btnCadastrarInstituicao = new JButton("Cadastrar Institui\u00E7\u00E3o");
-		btnCadastrarInstituicao.setBounds(438, 237, 133, 23);
+		btnCadastrarInstituicao.setBounds(409, 238, 133, 23);
 		contentPane.add(btnCadastrarInstituicao);
 		
 		JLabel lblCadastrarInstituicao = new JLabel("N\u00E3o achou a Institui\u00E7\u00E3o?\n Clique abaixo:\r\n");

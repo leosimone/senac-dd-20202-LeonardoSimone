@@ -11,18 +11,17 @@ public class PessoaVO {
 	private String sexo;
 	private String dataNascimento;
 	private boolean voluntario;
-	public PessoaVO(String nome, String cpf, String sexo, String dataNascimento, boolean voluntario) {
+	
+	public PessoaVO(int id, String nome, String cpf, String sexo, String dataNascimento, boolean voluntario) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.voluntario = voluntario;
 	}
-	public PessoaVO(int id) {
-		super();
-		this.id = id;
-	}
+	
 	public PessoaVO() {
 		super();
 		// TODO Auto-generated constructor stub
