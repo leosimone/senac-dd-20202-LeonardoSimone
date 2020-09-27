@@ -115,7 +115,7 @@ public class TelaCadastroPessoas extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 			PessoaVO pessoa = new PessoaVO();
-				if(txtNome.getText().equals("")) {
+				if(txtNome.getText().equals("") || txtNome.getText().equals("   ")) {
 					JOptionPane.showMessageDialog(null, "Campo nome obrigatório", "Atenção", JOptionPane.WARNING_MESSAGE);
 				return;
 				}

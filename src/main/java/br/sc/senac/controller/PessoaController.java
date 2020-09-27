@@ -9,7 +9,7 @@ import br.sc.senac.model.exception.PessoaSemNomeException;
 public class PessoaController {
 
 	private PessoaBO bo = new PessoaBO(); 
-
+	
 	
 	public String salvar(PessoaVO pessoaNova) {
 		String mensagem = "";

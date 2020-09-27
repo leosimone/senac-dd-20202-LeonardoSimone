@@ -7,25 +7,17 @@ import br.sc.senac.model.exception.PessoaSemNomeException;
 
 public class PessoaBO {
 
-	private PessoaDAO pessoaDAO = new PessoaDAO();
+	private PessoaDAO pessoa = new PessoaDAO();
 
 	public PessoaVO salvar(PessoaVO novaPessoa) throws PessoaSemNomeException, CpfInvalidoException {
 
-		String pessoaSemNome = novaPessoa.getNome();
-		if (pessoaSemNome == null) {
-			throw new PessoaSemNomeException("Pessoa deve possuir nome ou nome maior que 3 letras");
-		} else if (pessoaSemNome.length() <= 3) {
-			throw new PessoaSemNomeException("Pessoa deve possuir nome ou nome maior que 3 letras");
-		}
-
-		PessoaDAO novaPessoaDAO = new PessoaDAO();
-		
-		if(novaPessoaDAO.cpfJaCadastrado(novaPessoa.getCpf())) {
+				
+		if(pessoa.cpfJaCadastrado(novaPessoa.getCpf())) {
 			throw new CpfInvalidoException("o CPF informado (" + novaPessoa.getCpf() + ") já está cadastrado");
 			
 		}
 		
-		this.pessoaDAO.inserir(novaPessoa);
+		this.pessoa.inserir(novaPessoa);
 
 		return novaPessoa;
 	}
