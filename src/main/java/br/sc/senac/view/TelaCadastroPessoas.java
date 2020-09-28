@@ -25,6 +25,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
+
+import com.toedter.calendar.JDateChooser;
 
 public class TelaCadastroPessoas extends JFrame {
 
@@ -34,7 +37,7 @@ public class TelaCadastroPessoas extends JFrame {
 	private JComboBox cBSexo;
 	private JComboBox cBTipo;
 	private final Action action = new SwingAction();
-
+	private JDateChooser testeData;
 	/**
 	 * Launch the application.
 	 */
@@ -115,15 +118,23 @@ public class TelaCadastroPessoas extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 			PessoaVO pessoa = new PessoaVO();
+			
+			
 				if(txtNome.getText().equals("") || txtNome.getText().equals("   ")) {
 					JOptionPane.showMessageDialog(null, "Campo nome obrigatório", "Atenção", JOptionPane.WARNING_MESSAGE);
 				return;
 				}
 				if(txtCPF.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Campo CPF obrigatório", "Atenção", JOptionPane.WARNING_MESSAGE);
-				return;}
+				return;
+				}
 				
 				else {
+					pessoa.setNome(txtNome.getText());
+					pessoa.setCpf(txtCPF.getText());
+					pessoa.setSexo((String) cBSexo.getSelectedItem());
+					pessoa.setVoluntario((Boolean) cBTipo.getSelectedItem());
+					pessoa.setDataNascimento((String) testeData.toString());
 					
 					PessoaController controller = new PessoaController();
 					
@@ -147,6 +158,17 @@ public class TelaCadastroPessoas extends JFrame {
 		JLabel lblCadastrarInstituicao = new JLabel("N\u00E3o achou a Institui\u00E7\u00E3o?\n Clique abaixo:\r\n");
 		lblCadastrarInstituicao.setBounds(385, 213, 204, 14);
 		contentPane.add(lblCadastrarInstituicao);
+		
+		JDateChooser dCNascimento = new JDateChooser();
+		dCNascimento.setBounds(385, 159, 126, 20);
+		contentPane.add(dCNascimento);
+		testeData = dCNascimento;
+		
+		
+		JLabel lblDataNascimento = new JLabel("Data de Nascimento");
+		lblDataNascimento.setBounds(385, 134, 126, 14);
+		contentPane.add(lblDataNascimento);
+		
 	}
 	private ArrayList<String> obterTipo() {
 		ArrayList<String> tipos = new ArrayList<String>();
@@ -155,7 +177,10 @@ public class TelaCadastroPessoas extends JFrame {
 		tipos.add("Pesquisador(a)");
 		return tipos;
 	}
-
+	//private boolean isVoluntario(String tipo) { return tipo == 'Voluntario(a)' }
+	
+	
+	
 	private ArrayList<String> obterSexo() {
 		ArrayList<String> sexos = new ArrayList<String>();
 		sexos.add(" ");
