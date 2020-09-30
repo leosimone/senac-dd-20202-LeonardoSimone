@@ -15,6 +15,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import com.toedter.calendar.JDateChooser;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TelaCadastroVacinas extends JFrame {
 
@@ -115,6 +118,23 @@ public class TelaCadastroVacinas extends JFrame {
 		cBEstagio = new JComboBox(estagio.toArray());
 		cBEstagio.setBounds(178, 73, 221, 20);
 		contentPane.add(cBEstagio);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(181, 232, 150, 20);
+		contentPane.add(dateChooser);
+		
+		JButton btnSalvarVacina = new JButton("SALVAR");
+		btnSalvarVacina.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				
+				
+			}
+		});
+		btnSalvarVacina.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnSalvarVacina.setBounds(230, 263, 89, 23);
+		contentPane.add(btnSalvarVacina);
 	}
 	
 	private ArrayList<String> obterEstagio() {

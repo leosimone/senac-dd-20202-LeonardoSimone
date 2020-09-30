@@ -1,7 +1,6 @@
 package br.sc.senac.controller;
 
 import br.sc.senac.model.bo.PessoaBO;
-import br.sc.senac.model.dao.PessoaDAO;
 import br.sc.senac.model.entity.PessoaVO;
 import br.sc.senac.model.exception.CpfInvalidoException;
 import br.sc.senac.model.exception.PessoaSemNomeException;

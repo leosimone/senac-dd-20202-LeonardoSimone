@@ -38,6 +38,7 @@ public class TelaCadastroPessoas extends JFrame {
 	private JComboBox cBTipo;
 	private final Action action = new SwingAction();
 	private JDateChooser testeData;
+	private boolean Voluntario = true;
 	/**
 	 * Launch the application.
 	 */
@@ -133,7 +134,7 @@ public class TelaCadastroPessoas extends JFrame {
 					pessoa.setNome(txtNome.getText());
 					pessoa.setCpf(txtCPF.getText());
 					pessoa.setSexo((String) cBSexo.getSelectedItem());
-					pessoa.setVoluntario((Boolean) cBTipo.getSelectedItem());
+					pessoa.setVoluntario(Voluntario);
 					pessoa.setDataNascimento((String) testeData.toString());
 					
 					PessoaController controller = new PessoaController();
@@ -170,15 +171,23 @@ public class TelaCadastroPessoas extends JFrame {
 		contentPane.add(lblDataNascimento);
 		
 	}
-	private ArrayList<String> obterTipo() {
+	public ArrayList<String> obterTipo() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		tipos.add(" ");
 		tipos.add("Voluntário(a)");
-		tipos.add("Pesquisador(a)");
+		tipos.add("Pesquisador(a)");		
 		return tipos;
 	}
-	//private boolean isVoluntario(String tipo) { return tipo == 'Voluntario(a)' }
 	
+	
+	private boolean isVoluntario (String tipos) {
+		boolean Voluntario = true;
+		if(tipos.contentEquals("Pesquisador(a)")){
+			Voluntario = false;
+		}
+		
+		return Voluntario;
+	}
 	
 	
 	private ArrayList<String> obterSexo() {
